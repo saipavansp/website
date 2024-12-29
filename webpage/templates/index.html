@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>RevuteAI | Empowering Careers</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Link to your external CSS -->
+  <link rel="stylesheet" href="static/css/style.css" />
+</head>
+<body>
+  <!-- Flash Messages -->
+  {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+      {% for category, message in messages %}
+        <div class="alert alert-{{ category }}">
+          {{ message }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="logo">Revute<span>AI</span></div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#contact" class="btn-demo">Request Demo</a></li>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#courses">Courses</a></li>
+      <li><a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="menu-icon" onclick="toggleMenu()">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <header id="home" class="hero-section">
+    <div class="hero-content">
+      <h1>AI Assistance Learning for BFSI Career Aspirants</h1>
+      <p>Train through our proprietary platform to upskill yourself and unlock new opportunities in the financial sector.</p>
+      <a href="#courses" class="btn-primary">Explore Courses</a>
+    </div>
+    <!-- Decorative element -->
+    <div class="hero-shape"></div>
+  </header>
+
+  <!-- Courses Section -->
+  <section id="courses" class="courses-section">
+    <h2>Our Curated Courses</h2>
+    <div class="courses-container">
+      <!-- Course Card 1 -->
+      <div class="course-card">
+        <img src="/api/placeholder/400/250" />
+        <h3>Sales Mastery in BFSI</h3>
+        <p>Learn effective sales strategies tailored for the Banking, Financial Services, and Insurance sectors.</p>
+      </div>
+      <!-- Course Card 2 -->
+      <div class="course-card">
+        <img src="/api/placeholder/400/250" />
+        <h3>BFSI Domain Knowledge</h3>
+        <p>Gain in-depth understanding of banking products, insurance, and financial services workflows.</p>
+      </div>
+      <!-- Course Card 3 -->
+      <div class="course-card">
+        <img src="/api/placeholder/400/250" />
+        <h3>Placement Assistance Program</h3>
+        <p>Receive resume-building guidance, interview preparation, and placement support with top BFSI companies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Us Section -->
+  <section id="about" class="about-section">
+    <div class="about-content">
+      <h2>About RevuteAI</h2>
+      <p>
+        We are a dedicated team of professionals with years of experience in the Banking, Financial Services, and Insurance (BFSI) industry. Our mission is to bridge the skill gap by providing
+        high-quality, practical, and industry-relevant training to aspiring job seekers.
+      </p>
+      <!-- Team Members -->
+     <div class="team-members">
+    <div class="member">
+        <div class="photo-circle"></div>
+        <h3 class="member-name">Soundhar</h3>
+        <p class="member-qualification">MBA, Financial Analytics</p>
+    </div>
+
+    <div class="member">
+        <div class="photo-circle"></div>
+        <h3 class="member-name">karthi</h3>
+        <p class="member-qualification">PhD, Banking Systems</p>
+    </div>
+
+    <div class="member">
+        <div class="photo-circle"></div>
+        <h3 class="member-name">Subbu</h3>
+        <p class="member-qualification">MSc, Insurance Management</p>
+    </div>
+</div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <div class="contact-wrapper">
+        <!-- Left side: Contact Info -->
+        <div class="contact-info">
+            <nav class="contact-nav">
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#courses">Courses</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+            <p class="company-email">
+                Email: <a href="mailto:info@revuteai.com">info@revuteai.com</a>
+            </p>
+        </div>
+
+        <!-- Right side: Contact Form -->
+        <div class="contact-container">
+            <form class="contact-form" action="/contact" method="POST">
+                <label for="name">Full Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your full name" required/>
+
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required/>
+
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required/>
+
+                <label for="message">Message</label>
+                <textarea id="message" rows="5" name="message" placeholder="How can we help you?" required></textarea>
+
+                <button type="submit" class="btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>&copy; 2024 RevuteAI. All rights reserved.</p>
+  </footer>
+
+  <!-- JavaScript for mobile menu -->
+  <script>
+    function toggleMenu() {
+      const navLinks = document.getElementById('navLinks');
+      navLinks.classList.toggle('active');
+    }
+  </script>
+</body>
+</html>
