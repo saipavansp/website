@@ -156,11 +156,34 @@
   </footer>
 
   <!-- JavaScript for mobile menu -->
-  <script>
+   <script>
+    const menuIcon = document.querySelector('.menu-icon');
+    const navLinks = document.getElementById('navLinks');
+    const body = document.body;
+
     function toggleMenu() {
-      const navLinks = document.getElementById('navLinks');
-      navLinks.classList.toggle('active');
+        menuIcon.classList.toggle('active');
+        navLinks.classList.toggle('active');
+        body.classList.toggle('menu-open');
     }
+
+    // Close menu when clicking a link
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuIcon.classList.remove('active');
+            navLinks.classList.remove('active');
+            body.classList.remove('menu-open');
+        });
+    });
+
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!menuIcon.contains(e.target) && !navLinks.contains(e.target)) {
+            menuIcon.classList.remove('active');
+            navLinks.classList.remove('active');
+            body.classList.remove('menu-open');
+        }
+    });
   </script>
 </body>
 </html>
