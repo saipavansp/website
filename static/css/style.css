@@ -224,9 +224,11 @@ body {
     color: var(--text-gray);
     font-size: 1.1rem;
     margin-bottom: 1.5rem;
+    max-width: 800px;
+    margin: 0 auto 2rem;
 }
 
-/* Team Members */
+/* Team Members Section */
 .team-members {
     display: flex;
     justify-content: center;
@@ -236,47 +238,40 @@ body {
 }
 
 .member {
+    width: 280px;
     text-align: center;
-    width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .photo-circle {
-    width: 150px;
-    height: 150px;
-    margin: 0 auto 1.5rem auto;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     border: 3px solid var(--accent-blue);
-    background-color: var(--light-blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    margin-bottom: 1.5rem;
 }
-
-.photo-circle::before {
-    content: "+";
-    font-size: 3rem;
-    color: var(--accent-blue);
-    opacity: 0.5;
-}
-
-.photo-circle:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    cursor: pointer;
+.photo-circle img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
 }
 
 .member-name {
-    font-size: 1.2rem;
+    font-size: 1.4rem;
     color: var(--primary-blue);
-    margin-bottom: 0.5rem;
+    margin: 1rem 0 0.5rem;
+    font-weight: 600;
 }
 
 .member-qualification {
-    font-size: 0.9rem;
     color: var(--text-gray);
+    font-size: 1rem;
 }
 
 /* Contact Section */
@@ -336,6 +331,12 @@ body {
     box-shadow: 0 4px 15px rgba(0,0,0,0.1);
 }
 
+.contact-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-dark);
+}
+
 .contact-form input,
 .contact-form textarea {
     width: 100%;
@@ -375,6 +376,13 @@ body {
     margin: 1rem;
     border-radius: 8px;
     text-align: center;
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    width: 90%;
+    max-width: 500px;
 }
 
 .alert-success {
@@ -421,17 +429,12 @@ body {
         margin: 1.5rem 0;
     }
 
-    .nav-links .btn-demo {
-        margin-top: 1rem;
-    }
-
     .hero-content h1 {
         font-size: 2.5rem;
     }
 
     .hero-section {
         padding-top: 100px;
-        min-height: 100vh;
         text-align: center;
     }
 
@@ -448,15 +451,35 @@ body {
     }
 
     .member {
-        width: 150px;
+        width: 240px;
     }
 
     .photo-circle {
-        width: 120px;
-        height: 120px;
+        width: 160px;
+        height: 160px;
     }
 
-    body.menu-open {
-        overflow: hidden;
+    .member:nth-child(2) .photo-circle img {
+    object-position: top center;
+    transform: scale(1.1);
+}
+}
+
+@media (max-width: 480px) {
+    .member {
+        width: 100%;
+        max-width: 280px;
     }
+
+    .hero-content h1 {
+        font-size: 2rem;
+    }
+
+    .courses-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+body.menu-open {
+    overflow: hidden;
 }

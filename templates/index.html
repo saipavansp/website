@@ -87,31 +87,28 @@
         high-quality, practical, and industry-relevant training to aspiring job seekers.
       </p>
       <!-- Team Members -->
-     <div class="team-members">
-    <div class="member">
-        <div class="photo-circle"></div>
-        <h3 class="member-name">Soundhar</h3>
-        <p class="member-qualification">MBA, Financial Analytics</p>
-    </div>
+      <div class="team-members">
+        <div class="member">
+            <div class="photo-circle">
+                <img src="{{ url_for('static', filename='images/soundhar.jpg') }}" alt="Soundhar"/>
+            </div>
+            <h3 class="member-name">Soundhar</h3>
+            <p class="member-qualification">MBA, Financial Analytics</p>
+        </div>
 
-    <div class="member">
-        <div class="photo-circle"></div>
-        <h3 class="member-name">karthi</h3>
-        <p class="member-qualification">PhD, Banking Systems</p>
-    </div>
-
-    <div class="member">
-        <div class="photo-circle"></div>
-        <h3 class="member-name">Subbu</h3>
-        <p class="member-qualification">MSc, Insurance Management</p>
-    </div>
-</div>
+        <div class="member">
+           <div class="photo-circle">
+        <img src="{{ url_for('static', filename='images/subbu.jpg') }}" alt="Subbu"/>
+        </div>
+           <h3 class="member-name">Subbu</h3>
+            <p class="member-qualification">MSc, Insurance Management</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Contact Section -->
-  <!-- Contact Section -->
-<section id="contact" class="contact-section">
+  <section id="contact" class="contact-section">
     <h2>Contact Us</h2>
     <div class="contact-wrapper">
         <!-- Left side: Contact Info -->
@@ -125,7 +122,7 @@
                 </ul>
             </nav>
             <p class="company-email">
-                Email: <a href="mailto:support@revuteai.com">info@revuteai.com</a>
+                Email: <a href="mailto:contact@revuteai.com">contact@revuteai.com</a>
             </p>
         </div>
 
@@ -148,7 +145,7 @@
             </form>
         </div>
     </div>
-</section>
+  </section>
 
   <!-- Footer -->
   <footer class="footer">
@@ -156,7 +153,7 @@
   </footer>
 
   <!-- JavaScript for mobile menu -->
-   <script>
+  <script>
     const menuIcon = document.querySelector('.menu-icon');
     const navLinks = document.getElementById('navLinks');
     const body = document.body;
