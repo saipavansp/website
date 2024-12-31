@@ -483,3 +483,26 @@ body {
 body.menu-open {
     overflow: hidden;
 }
+
+/* Update/Add these styles to your course-card section in style.css */
+
+.course-card h3 {
+    padding: 1.5rem 1.5rem 0.5rem;
+    color: var(--primary-blue);
+    font-size: 1.4rem;
+    text-align: center; /* Centers the h3 text */
+}
+
+.course-card h5 {
+    padding: 0.5rem 1.5rem;
+    color: var(--text-dark);
+    font-size: 1.1rem;
+    text-align: center; /* Centers the h5 text */
+    margin: 0;
+}
+
+.course-card p {
+    padding: 0 1.5rem 1.5rem;
+    color: var(--text-gray);
+    text-align: center; /* Also centers the paragraph text for consistency */
+}
