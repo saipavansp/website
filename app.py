@@ -2,17 +2,25 @@ from flask import Flask, session, request, jsonify, render_template, redirect, u
 from flask_pymongo import PyMongo
 from flask_cors import CORS
 from werkzeug.security import generate_password_hash, check_password_hash
+from flask_mail import Mail, Message
+import os
 
 app = Flask(__name__)
 CORS(app)
+app.secret_key = '123456789'
 
-# Add a secret key for flash messages
-app.secret_key = '123456789'  # Change this to a secure secret key
-
-# MongoDB configuration
 app.config[
     "MONGO_URI"] = "mongodb+srv://vasudha:vasudha@cluster0.0vkno.mongodb.net/bfsi?authSource=admin&retryWrites=true&w=majority&readPreference=primary"
 mongo = PyMongo(app)
+
+# Email configuration
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USERNAME'] = 'contact@revuteai.com'
+app.config['MAIL_PASSWORD'] = 'hvrq nyvp gtfz ukyo'
+app.config['MAIL_DEFAULT_SENDER'] = 'contact@revuteai.com'
+mail = Mail(app)
 
 
 @app.route('/')
@@ -24,7 +32,6 @@ def home():
 def contacts():
     if request.method == 'POST':
         try:
-            # Get data from the form
             contact_data = {
                 'name': request.form.get('name'),
                 'email': request.form.get('email'),
@@ -32,21 +39,34 @@ def contacts():
                 'message': request.form.get('message')
             }
 
-            # Validate required fields
             if not all(contact_data.values()):
                 flash('All fields are required!', 'error')
                 return redirect(url_for('home'))
 
-            # Insert into database
-            mongo.db.bfsi.insert_one(contact_data)
+            # Send email notification
+            msg = Message(
+                'New Contact Form Submission - RevuteAI',
+                recipients=['your-notification-email@gmail.com']
+            )
+            msg.body = f"""
+New Contact Form Submission:
+Name: {contact_data['name']}
+Email: {contact_data['email']}
+Phone: {contact_data['phone']}
+Message: {contact_data['message']}
+            """
 
-            flash('Thank you for contacting us! We will get back to you soon.', 'success')
-            return redirect(url_for('home'))
+            mail.send(msg)
+            mongo.db.bfsi.insert_one(contact_data)
+            flash('Thank you for contacting us!', 'success')
 
         except Exception as e:
-            print(f"Error: {str(e)}")
-            flash('An error occurred. Please try again later.', 'error')
-            return redirect(url_for('home'))
+            import traceback
+            error_details = traceback.format_exc()
+            print(f"Error details:\n{error_details}")
+            flash(f'Error: {str(e)}', 'error')
+
+        return redirect(url_for('home'))
 
     return render_template('index.html')
 
