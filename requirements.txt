@@ -4,3 +4,4 @@ pymongo
 flask-cors
 werkzeug
 gunicorn==21.2.0
+flask_mail
