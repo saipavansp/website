@@ -1,7 +1,6 @@
 from flask import Flask, session, request, jsonify, render_template, redirect, url_for, flash
 from flask_pymongo import PyMongo
 from flask_cors import CORS
-from werkzeug.security import generate_password_hash, check_password_hash
 from flask_mail import Mail, Message
 import os
 
